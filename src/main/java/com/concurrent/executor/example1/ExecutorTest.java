@@ -18,7 +18,7 @@ public class ExecutorTest {
     }
 
     public static void main(String[] args) {
-        executor = Executors.newCachedThreadPool();
+        executor = Executors.newCachedThreadPool();//创建无界的线程池
         /**
          new ThreadPoolExecutor(0, Integer.MAX_VALUE,60L, TimeUnit.SECONDS,new SynchronousQueue<Runnable>());
          */
