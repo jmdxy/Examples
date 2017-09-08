@@ -22,6 +22,41 @@ public class ExecutorTest {
         /**
          new ThreadPoolExecutor(0, Integer.MAX_VALUE,60L, TimeUnit.SECONDS,new SynchronousQueue<Runnable>());
          */
+        executor.execute(()->{
+            System.out.println("run1");
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("A");
+            System.out.println("run1 end");
+        });
+
+        executor.execute(()->{
+            System.out.println("run2");
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("B");
+            System.out.println("run2 end");
+        });
+
+        for (int i = 0; i < 5; i++) {
+            final int k = i;
+            executor.execute(()->{
+                System.out.println("run"+k);
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("A"+k);
+                System.out.println("run"+k+" end");
+            });
+        }
 
     }
 }
